@@ -1,0 +1,659 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python IDE Set Up Manual for Mac</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c2c48b8f-41ef-49e3-86a7-367e68a3d2c7" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_robert_stewart_spacewalk.jpg" style="object-position:center 40%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">👨‍💻</span></div><h1 class="page-title">Python IDE Set Up Manual for Mac</h1></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9d6fc396-7b18-4dea-8fdc-9858875cda50"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">This document is written by Jeonghyun Kim(kimjh@bawi.org).
+You cannot share this manual without owner&#x27;s permission.</div></figure><nav id="e538d18f-32c5-4fd0-9e50-42256ca7efe8" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dd710af8-1d40-47e6-9b64-d358fc2ed660">0. Mac Shortcuts</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9696b2da-6856-4eb7-a4bd-18ffe4b0ab4d">1. Python Installation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2bd9440f-830c-4b39-9913-6f636133b124">2. VS Code Installation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6b758075-b395-4de2-9e7b-afe0c109ed97">3. Adding Python Extension in VS Code</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c7152cb5-5d86-4587-92ff-9db1d2fe6ad9">4. Run your first Python Program</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dd4a094f-8406-48fc-b2e1-934486384ef3">5. (Optional) Using the Jupyter Notebook</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ad314c07-58f7-42a1-ab7b-803bd870675f">* Congratulations! You&#x27;re all set. </a></div></nav><h2 id="dd710af8-1d40-47e6-9b64-d358fc2ed660" class="">0. Mac Shortcuts</h2><blockquote id="bf556263-21d7-4adb-a3e6-3637410fdfdc" class="">By pressing certain key combinations, you can do things that normally need a mouse, trackpad, or other input device.
+In this section, we&#x27;ll handle how to read and use shortcuts</blockquote><p id="f08e1f29-cda9-4cfe-bb0b-a5207d81f32c" class="">Please keep these in your mind while following upcoming instructions.</p><ul id="6c4d9ea2-3173-493f-8ece-6888929fc1b3" class="bulleted-list"><li>Command (or Cmd) ⌘</li></ul><ul id="3da0eeaa-3b38-4a57-a9bf-c4ba0d5947ac" class="bulleted-list"><li>Shift ⇧</li></ul><ul id="6c11b8b8-c0c5-4e01-b172-1a8cd8f85075" class="bulleted-list"><li>Option (or Alt) ⌥</li></ul><ul id="f684f1be-a735-4c59-a697-fcc11ce43762" class="bulleted-list"><li>Control (or Ctrl) ⌃</li></ul><ul id="bc36dac8-f524-4fdd-8f4a-3edaa240fbb9" class="bulleted-list"><li>Caps Lock ⇪</li></ul><p id="926f76d1-d9be-4bc6-a224-898b897319b9" class="">
+</p><p id="e3ecb245-7a82-41f4-8fa8-7f720647732b" class="">Ex) ⌘C : Command + C, ⇧⌘T: Shift + Command + T</p><p id="1adb4ac0-dd13-4b1b-be6f-7f4dd7090950" class="">
+</p><hr id="c53820b6-de4b-4c3c-be1c-d65ce10673ed"/><h2 id="9696b2da-6856-4eb7-a4bd-18ffe4b0ab4d" class="">1. Python Installation</h2><blockquote id="35013fde-0e79-421d-9ff8-5d81279d0ae0" class="">Python3 must be installed on our computer in order to proceed with the class. Follow the steps below.</blockquote><ul id="5d54974b-a4d8-4558-b925-6cf9a4bf4b1c" class="bulleted-list"><li>Download python3 installation file from the official website.<p id="7463efcf-eec0-4413-ae7a-9dc611682046" class="">You can choose the version via this link.</p><figure id="d291ee3b-1b44-4aa8-b3e8-4daf3fe7a71f"><a href="https://www.python.org/downloads/mac-osx/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Python Releases for Mac OS X</div><div class="bookmark-description">The official home of the Python Programming Language</div></div><div class="bookmark-href"><img src="https://www.python.org/static/favicon.ico" class="icon bookmark-icon"/>https://www.python.org/downloads/mac-osx/</div></div><img src="https://www.python.org/static/opengraph-icon-200x200.png" class="bookmark-image"/></a></figure><p id="3250605e-ca57-4803-b592-0da21891d79f" class="">
+</p></li></ul><ul id="0f540aa3-6893-405f-89b1-a3a1670cca22" class="bulleted-list"><li>Or just click this download link I prepared for you. <figure id="2bab9daf-9280-422d-ad97-3081b92d133e"><a href="https://www.python.org/ftp/python/3.8.3/python-3.8.3-macosx10.9.pkg" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://www.python.org/ftp/python/3.8.3/python-3.8.3-macosx10.9.pkg</div></div></a></figure><p id="2a0d425f-9a9f-4089-9e65-dcd55143c52b" class="">
+</p></li></ul><ul id="5b7972c5-9232-4b65-8cd4-c4d15d7b410b" class="bulleted-list"><li>Execute the installation file. (ex. <em>python-3.8.3-macosx10.9.pkg</em>)<figure id="cb5cea27-89a1-4cb6-8056-c5f26c2235ca" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled.png"><img style="width:1236px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled.png"/></a></figure><p id="bfcb7e1a-0383-4169-ac6f-249d0546ebc3" class="">
+</p></li></ul><ul id="d5c80520-63bc-45d6-b4e8-a11f50d325aa" class="bulleted-list"><li>Open Terminal. (⌘Space + ⌘T or just ⌘[hold] Space + T)<figure id="0121a45d-cc49-4151-a47d-9c2c522cde8b" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%201.png"><img style="width:1344px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%201.png"/></a></figure><figure id="3edba7b0-1d5f-4800-8bc6-d747d670c728" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%202.png"><img style="width:1130px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%202.png"/></a></figure><p id="12ece77b-f469-4ef2-b9a2-ea0b63109d4a" class="">
+</p></li></ul><ul id="7d31b1ba-2cb5-49dc-adce-64976755ed1d" class="bulleted-list"><li>Enter lines below to make sure Python3 is installed properly.<pre id="ee92870e-0fe1-4566-a4bf-c8db15326f13" class="code"><code>% python3 --version</code></pre><figure id="9e0f3a64-cb4f-492a-8e97-adc567858a64" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%203.png"><img style="width:724px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%203.png"/></a></figure><pre id="ebbf3d52-7f53-4579-accc-7eb2924829c0" class="code"><code>% pip3 --version</code></pre><p id="0eb900a9-f41f-4522-b350-935262900397" class="">Your versions(python3 and pip3) might be different from mine, but don&#x27;t worry. It&#x27;s not a big deal. Checking only &#x27;major digit&#x27; is enough. (python: 3 and pip: 20)</p><figure id="f2085e9f-6f36-4890-b0ea-ec5f1b96c5ee" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%204.png"><img style="width:662px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%204.png"/></a></figure><p id="7682ebe9-6990-43cb-b874-fbf81a638536" class="">
+</p></li></ul><hr id="5cad6e52-a274-4fd5-9a32-ac912443d807"/><h2 id="2bd9440f-830c-4b39-9913-6f636133b124" class="">2. VS Code Installation</h2><blockquote id="423432cc-958d-41c0-8e2a-5e2fe9e34c12" class="">There are several good text editors for programming,
+We will use &#x27;VS Code&#x27; for writing Python3 codes.</blockquote><ul id="25ed1d4a-aa55-4c2f-aff9-08d510f30c3b" class="bulleted-list"><li>Download VS Code from the official website.<figure id="96e19725-f6d3-4265-9dfb-cbeedf33ff95"><a href="https://code.visualstudio.com/Download" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download Visual Studio Code - Mac, Linux, Windows</div><div class="bookmark-description">Visual Studio Code is free and available on your favorite platform - Linux, macOS, and Windows. Download Visual Studio Code to experience a redefined code editor, optimized for building and debugging modern web and cloud applications.</div></div><div class="bookmark-href"><img src="https://code.visualstudio.com/favicon.ico" class="icon bookmark-icon"/>https://code.visualstudio.com/Download</div></div><img src="https://code.visualstudio.com/opengraphimg/opengraph-home.png" class="bookmark-image"/></a></figure><p id="f1286008-1000-4a5f-9353-11a3d3bba303" class="">
+</p></li></ul><ul id="9d0e79c5-bdfb-4e31-906d-fc0ec1e0c7a8" class="bulleted-list"><li>Unzip(Open) the downloaded file. (ex. <em>VSCode-darwin-stable.zip</em>)<figure id="3a99c562-4357-45dd-9bae-41fbcedfae1c" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%205.png"><img style="width:1538px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%205.png"/></a></figure><p id="8920e593-936a-4e61-b690-008e9492107a" class="">
+</p></li></ul><ul id="20718268-748e-41e3-a7bc-3c09858371b9" class="bulleted-list"><li>Drag and drop <strong>Visual Studio Code.app</strong> to Application Folder.<figure id="a17cd9e7-069b-4eeb-aefa-544edc4afa60" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%206.png"><img style="width:726px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%206.png"/></a></figure><p id="3ff97d9d-0a18-4183-9a61-085f5ca2fd76" class="">
+</p></li></ul><ul id="7d29b89d-ccb5-4fcf-bcce-9b91e30b33b4" class="bulleted-list"><li>Now you can see <strong>Visual Studio Code.app </strong>on your Launchpad.<figure id="1a49da77-6d7d-4bf1-98f3-5aeec939afdc" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%207.png"><img style="width:3360px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%207.png"/></a></figure><p id="70c75a26-19b3-4dec-929f-c3e0aace2be3" class="">
+</p></li></ul><hr id="e5ca87be-677d-4d08-a0e9-9efb657d3f29"/><h2 id="6b758075-b395-4de2-9e7b-afe0c109ed97" class="">3. Adding Python Extension in VS Code</h2><blockquote id="25547d51-bfe1-419e-8156-55e9247bfa6d" class="">VS Code is just same as other text editors if you don&#x27;t add extensions.
+You should simply add one Python extension before we start.</blockquote><ul id="7ede4467-2531-4b48-abe7-35e2d8ae1d5a" class="bulleted-list"><li>Open Visual Studio Code application and extensions tab as well. (⇧⌘X)</li></ul><figure id="279da9a5-9291-47d5-8b78-4d9b2ff6643d" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%208.png"><img style="width:2290px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%208.png"/></a></figure><p id="6971d2bf-26f5-4740-a1e1-eef780868625" class="">
+</p><ul id="6708cb9c-d27d-4229-a0e4-7937fe6c1921" class="bulleted-list"><li>Search &#x27;Python&#x27; and install the top extension.</li></ul><figure id="6197b1c9-0553-4879-a29e-f95796187725" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%209.png"><img style="width:2280px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%209.png"/></a></figure><ul id="5f318150-7ee3-4510-9e05-13ff36d71a46" class="bulleted-list"><li>Wait a moment(depends on network status, ~10m) for the installation to be completed.</li></ul><p id="085ac893-3cc1-4f55-a748-33efed5d6ca6" class="">
+</p><ul id="7ed9d44c-cd80-4b67-9e83-43b55ce82ee7" class="bulleted-list"><li>Open terminal in the VS Code(⌃` : Ctrl + `) and type the line below.<pre id="8f4c96f5-85c2-448c-8dd1-7ca46c7e965e" class="code"><code>% pip3 install pylint</code></pre><figure id="3afdc0f9-c354-4660-874a-197a5dcbfe47" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2010.png"><img style="width:2348px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2010.png"/></a></figure><figure id="449fe386-a3e5-4afc-a12e-d529409ae364" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2011.png"><img style="width:2350px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2011.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="080bf478-b013-42cb-9bcf-064679980259"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">if that code is not working, try this instead.
+
+%  sudo pip3 install pylint</div></figure></li></ul><p id="33880ae0-389e-48a9-be08-797ce12b366c" class="">
+</p><ul id="26149a87-3777-4056-9d18-d5b48fc57c71" class="bulleted-list"><li>Open VS Code Palette(⇧⌘P) and type linter
+and select &quot;<strong><em>Python: Select Linter</em></strong>&quot; <strong>→ </strong><em><strong>pylint</strong></em></li></ul><figure id="875dc002-f0ac-4fc4-887b-812e958b2719" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2012.png"><img style="width:2348px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2012.png"/></a></figure><figure id="de12841a-5eac-4d7c-acef-f070e5a0b5e4" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2013.png"><img style="width:2348px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2013.png"/></a></figure><p id="ed47f4c2-7987-437c-b6f7-5aa3eeaad899" class="">
+</p><hr id="90d20cba-9a22-465b-9ac0-7e3c6758fe14"/><h2 id="c7152cb5-5d86-4587-92ff-9db1d2fe6ad9" class="">4. Run your first Python Program</h2><blockquote id="2e65d015-5de6-4064-be11-877dfceb9189" class="">Now you&#x27;re ready to start.
+Let&#x27;s start with the simple program.</blockquote><p id="6d8cff23-109c-4469-b634-0b61501aa375" class="">
+</p><ul id="c37b64cc-8e40-468f-97aa-6fdc1fc70095" class="bulleted-list"><li>Create a new folder &#x27;practice_python&#x27; to anywhere. (Desktop, Document or somewhere)</li></ul><figure id="f98a9021-20a8-4e06-9ca3-6bc3d8b93b5d" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2014.png"><img style="width:1540px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2014.png"/></a></figure><p id="9a6c3e19-3718-4ff3-919d-ab59a3937a84" class="">
+</p><ul id="387c2ba3-e54f-440d-a924-aa8f508a78ca" class="bulleted-list"><li>Open Folder in VS Code you created just before. (File - Open or ⌘O)</li></ul><figure id="c6d63a18-c376-4140-b5c4-58974d834890" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2015.png"><img style="width:1676px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2015.png"/></a></figure><p id="82b732da-023c-4c67-acae-f96abda08b9e" class="">
+</p><ul id="ae92ba39-a6c4-4403-a065-a6285a4bfb45" class="bulleted-list"><li>Add a file &#x27;hello.py&#x27; to &#x27;practice_python&#x27; directory.</li></ul><figure id="9eed7803-937b-4b5a-bf33-62d25864ab94" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2016.png"><img style="width:630px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2016.png"/></a></figure><figure id="afdff43c-f710-4b84-a7a7-b685b75b7789" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2017.png"><img style="width:970px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2017.png"/></a></figure><p id="e8809fcb-66ca-4429-adb7-561d42492e97" class="">
+</p><ul id="8e9dbfb8-7b27-44d4-9deb-31d73538845d" class="bulleted-list"><li>Type the code below and save. (⌘S)<pre id="8222dd12-bc80-453d-ad10-49ebc5457505" class="code"><code>print(&#x27;Hello World!&#x27;)</code></pre><p id="9fc291af-10bb-4b39-9c19-cfebd7bd373b" class="">
+</p></li></ul><ul id="6fe66d48-e5ee-4f79-9732-0e14f68dc082" class="bulleted-list"><li>Run the program. You can see &#x27;Hello World!&#x27; in your console.</li></ul><figure id="635a5ccd-3512-4697-80be-f5df31058e43" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2018.png"><img style="width:2346px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2018.png"/></a></figure><p id="51bc3342-4d58-406b-898e-e40401ddb353" class="">
+</p><hr id="52c45fd5-2fb7-4a77-8072-6424fcb521c9"/><h2 id="dd4a094f-8406-48fc-b2e1-934486384ef3" class="">5. (Optional) Using the Jupyter Notebook</h2><blockquote id="612fb31c-79ae-47d2-8d6b-1b9e406810a7" class="">The Jupyter Notebook is an open-source(free) web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.
+This tool makes you able to debug your code easily and get the results more friendly. Still, as stated above, it&#x27;s not required.</blockquote><ul id="8875f192-0c94-4161-85ff-669533f96674" class="bulleted-list"><li>Type the line below. (Open terminal in the VS Code(⌃` : Ctrl + `) if it&#x27;s not already opened)<pre id="f5f28ad9-258d-4b20-94c3-6150936598af" class="code"><code>% pip3 install jupyter</code></pre></li></ul><figure id="2ea961ab-302c-4c28-bd6f-045b343ae9c0" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2019.png"><img style="width:1650px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2019.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="67676260-4c15-4516-834e-4b5d40b34cde"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">if that code is not working, try this instead.
+
+%  sudo pip3 install jupyter</div></figure><ul id="a90efad9-a583-4d89-aa45-4fb99a19a78f" class="bulleted-list"><li>Open VS Code Palette(⇧⌘P) again and type jupyter.
+Select <strong><em>Python: Create New Blank Jupyter Notebook </em></strong>as well.</li></ul><figure id="25ecc697-82d6-4a84-96b5-89a089000f6b" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2020.png"><img style="width:1736px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2020.png"/></a></figure><p id="451235c7-a35b-42fd-aa01-6305160b30d7" class="">
+</p><ul id="256fd08b-d69f-43e2-bd39-e997d993d347" class="bulleted-list"><li>Save file inside of &#x27;practice-python&#x27; folder as &#x27;hello.ipynb&#x27;. (⌘S)</li></ul><figure id="6bdc3f66-0ff0-4fb1-a012-50230f02ed78" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2021.png"><img style="width:1180px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2021.png"/></a></figure><p id="af5bdf90-1992-4bda-99ca-be2fa598e57a" class="">
+</p><ul id="3441ca8d-a61c-4c85-96c5-dd248e6af7b9" class="bulleted-list"><li>Type the code below again and run! (Press ⌃Enter) or (Click green play button)
+It will work after the notification is on at the right bottom corner.</li></ul><pre id="2213e32d-abb8-44f9-8c92-d18321ba93d8" class="code"><code>print(&#x27;Hello World!&#x27;)</code></pre><figure id="19978801-1730-41f9-973b-8ce75817ed46" class="image"><a href="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2022.png"><img style="width:1658px" src="Python%20IDE%20Set%20Up%20Manual%20for%20Mac%20cb5cea2789a14cb68056c5f26c2235ca/Untitled%2022.png"/></a></figure><p id="e0267c76-4957-4016-9819-af07f522fd8e" class="">
+</p><hr id="4a1cac3e-b7fa-403f-96d4-de2de2e304ae"/><h1 id="ad314c07-58f7-42a1-ab7b-803bd870675f" class="">* Congratulations! You&#x27;re all set. </h1></div></article></body></html>
